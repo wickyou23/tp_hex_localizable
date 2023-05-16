@@ -1,0 +1,100 @@
+//For network
+const networkPath = "/api/networks";
+const networkDeviceDetailsPath = "$networkPath/%s/networkDevices/%s";
+const networkDeleteDevicePath = "$networkPath/%s/networkDevices/%s";
+const networkCorpnetSettingPath = "$networkPath/%s/services/corpnet/vpnClient";
+const networkEnableCorpnetSettingPath = "$networkPath/%s/services/corpnet/enable";
+const networkWifiSettingPath = "$networkPath/%s/cfg/wifi";
+const networkTopoPath = "$networkPath/%s/services/topo/%s";
+const networkSecurityAntivirusPath =
+    "$networkPath/%s/services/security/antivirus/cfg/%s";
+const networkSecurityWebfilterPath =
+    "$networkPath/%s/services/security/webFilter/cfg/%s";
+const networkSecurityApplicationPath =
+    "$networkPath/%s/services/security/application/cfg/%s";
+const networkSecurityIPSPath = "$networkPath/%s/services/security/ips/cfg/%s";
+const networkSecurityAnitirusCMDPath =
+    "$networkPath/%s/services/security/antivirus/cmd/%s";
+const networkSecurityWebfilterCMDPath =
+    "$networkPath/%s/services/security/webFilter/cmd/%s";
+const networkSecurityApplicationCMDPath =
+    "$networkPath/%s/services/security/application/cmd/%s";
+const networkSecurityIPSCMDPath = "$networkPath/%s/services/security/ips/cmd/%s";
+const networkCommandPath = "$networkPath/%s/services/system/%s";
+const networkVPNStatusPath = "$networkPath/%s/status/%s";
+const networkConfigurationPath = "$networkPath/%s/cfg/system";
+const networkUpdateDeviceNamePath = "$networkPath/%s/networkDevices/%s/name";
+const networkFullConfigurationPath = "$networkPath/%s/cfg/full";
+const networkSteeringCommandPath = "$networkPath/%s/networkClients/cmd";
+const networkWanConfigurationPath = "$networkPath/%s/cfg/wan/%s";
+const networkStatus = "$networkPath/%s/status";
+
+const networkEnableOpenVPNServerPath = "$networkPath/%s/services/routerVPN/enable";
+const networkGetOpenVPNServerPath = "$networkPath/%s/services/routerVPN/server";
+const networkUpdateOpenVPNServerPath = "$networkPath/%s/services/routerVPN/server";
+
+const networkGetOpenVPNClientsPath = "$networkPath/%s/services/routerVPN/clients";
+const networkAddOpenVPNClientsPath = "$networkPath/%s/services/routerVPN/clients";
+const networkUpdateOpenVPNClientPath = "$networkPath/%s/services/routerVPN/clients/%s";
+const networkDeleteOpenVPNClientPath = "$networkPath/%s/services/routerVPN/clients/%s";
+
+const networkGetReserveIPListPath = "$networkPath/%s/networkClients/devices/reserveIP";
+const networkAddReserveIPPath = "$networkPath/%s/networkClients/devices/reserveIP";
+const networkDeleteReserveIPPath = "$networkPath/%s/networkClients/devices/reserveIP/%s";
+const networkGetReserveIPPath = "$networkPath/%s/networkClients/devices/reserveIP/%s";
+
+const networkClientPath = "$networkPath/%s/networkClients/devices";
+const updateNetworkClientPath = "$networkPath/%s/networkClients/devices/%s";
+
+//For device
+const deviceDetailsPath = "$apiDevicePath/%s";
+const deviceGetNetworkByDeviceIdPath = "$apiDevicePath/%s/network";
+
+//For system
+const systemPath = "/api/system/";
+
+
+========================
+const networkTokenPath = "$networkPath/%s/tokens";
+Method: GET
+Filter param: "filter": '{"order": ["created DESC"],"limit": 1}' 
+
+
+========================
+const networkDevicesPath = "$networkPath/%s/networkDevices";
+Method: GET
+Filter param: "filter": '{"order": ["created DESC"]}'
+
+
+========================
+const apiDevicePath = "/api/devices";
+Method: GET
+Filter params: 
+1. "filter": '{"where":{"serialNumber": "$search_text"}, "offset": $offset, "limit": $limit}'
+2. "filter": '{"where":{"macAddress": "$search_text"}, "offset": $offset, "limit": $limit}'
+3. "filter": '{"where":{"macAddress": "$search_text", "serialNumber": "$search"}, "offset": $offset, "limit": $limit}'
+4. "filter": '{"offset": $offset, "limit": $limit}'
+
+
+========================
+const unassignedDevicesPath = "$apiDevicePath/unassigned";
+Method: GET
+Filter params: 
+1. "filter": '{"where":{"serialNumber": "$search_text"}, "offset": $offset, "limit": $limit}'
+2. "filter": '{"where":{"macAddress": "$search_text"}, "offset": $offset, "limit": $limit}'
+3. "filter": '{"where":{"macAddress": "$search_text", "serialNumber": "$search"}, "offset": $offset, "limit": $limit}'
+4. "filter": '{"offset": $offset, "limit": $limit}'
+
+
+========================
+const getVPNServicesPath = "$systemPath/services/vpnServers";
+Method: GET
+Filter params: 
+1. "filter": '{"order": ["name ASC", "created DESC"], "offset": $offset, "limit": $limit}'
+2. "filter": '{"where":{"name":{"like": "%$search%"}}, "order": ["name ASC", "created DESC"]}'
+
+
+========================
+const getVPNServerDetailsPath = "$systemPath/services/vpnServers/%s";
+Method: GET
+Filter param: "filter": {"include": [{"relation": "networkVPNServers","scope": {"where": {"type": "server"}}}]}
