@@ -1,0 +1,1 @@
+# tp_hex_localizable
